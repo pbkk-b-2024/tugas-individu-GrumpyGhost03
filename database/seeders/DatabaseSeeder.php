@@ -1,30 +1,26 @@
 <?php
 
-// database/seeders/DatabaseSeeder.php
-
 namespace Database\Seeders;
 
-use App\Models\CarSale;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Database\Seeders\CarSalesSeeder;
+use Database\Seeders\MoieStableSeeder; // Import the MoieStableSeeder
 
 class DatabaseSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
     {
-        $this->call([
-            RolesSeeder::class,
-            UsersSeeder::class,
-            PermissionsSeeder::class,
-            CarsSeeder::class,
-            CustomersSeeder::class,
-            CarSalesSeeder::class,
-            MaintenanceSchedulesSeeder::class,
-            ServicesSeeder::class,
-            ServicePartsSeeder::class,
-            ServiceRecordsSeeder::class,
-            CarServiceAppointmentsSeeder::class,
-            InvoicesSeeder::class,
+        // User::factory(10)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
         ]);
+
+        // Call the MoieStableSeeder
+        $this->call(MovieStableSeeder::class);
     }
 }
